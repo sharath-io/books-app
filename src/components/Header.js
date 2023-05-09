@@ -5,10 +5,10 @@ export function Header(){
         <div>
             <h1>Books React App</h1>
             <nav>
-              <NavLink to='/'>Home || </NavLink>
-              <NavLink to='/favorites'>Favorites || </NavLink>
-              <NavLink to='/read'>Read || </NavLink>
-              <NavLink to='/profile'>Profile || </NavLink>
+              <NavLink to='/' className="nav-link">All Books </NavLink>
+              <NavLink to='/favorites' className="nav-link">Favorites </NavLink>
+              <NavLink to='/read' className="nav-link">Read </NavLink>
+              <NavLink to='/profile' className="nav-link">Profile </NavLink>
             </nav>
         </div>
     )
