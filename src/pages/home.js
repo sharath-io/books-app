@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { BookContext, FavoritesContext } from "../index";
+import { BookContext, FavoritesContext, ReadContext } from "../index";
 export function Home(){
     const {booksData} = useContext(BookContext);
     const {favorites,addToFav} = useContext(FavoritesContext);
+    const {markAsRead} = useContext(ReadContext);
     return (
         <div>
             <h1>Home</h1>
@@ -13,7 +14,7 @@ export function Home(){
                         <img src={book.image} alt={book.title}/>
                         <p>Title : {book.title}</p>
                         <p>Author: {book.author}</p>   
-                        <p><button disabled={book.read}> {!book.read ? "Mark as Read" : 'Already Read' }</button> </p>
+                        <p><button disabled={book.read} onClick={()=>markAsRead(book.id)}> {!book.read ? "Mark as Read" : 'Already Read' }</button> </p>
 
                         <p>
                             {
