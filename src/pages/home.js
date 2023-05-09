@@ -1,31 +1,28 @@
 import { useContext } from "react";
-import { BookContext } from "../index";
+import { NavLink } from "react-router-dom";
+import { BookContext, FavoritesContext } from "../index";
 export function Home(){
     const {booksData} = useContext(BookContext);
+    const {favorites,addToFav} = useContext(FavoritesContext);
     return (
         <div>
             <h1>Home</h1>
             <ul className="book-list" style={{listStyleType: 'none'}}>
                 {
-                    booksData.map(({id,image,title,author,read}) =><li key={id} className="book-card">
-                        <img src={image} alt={title}/>
-                        <p>Title : {title}</p>
-                        <p>Author: {author}</p>   
-                        <p><button disabled={read}> {!read ? "Mark as Read" : 'Already Read' }</button> </p>
-                        <p><button>Add to Fav</button></p>
+                    booksData.map((book) =><li key={book.id} className="book-card">
+                        <img src={book.image} alt={book.title}/>
+                        <p>Title : {book.title}</p>
+                        <p>Author: {book.author}</p>   
+                        <p><button disabled={book.read}> {!book.read ? "Mark as Read" : 'Already Read' }</button> </p>
+
+                        <p>
+                            {
+                            favorites.includes(book) ? <NavLink to="/favorites"><button>Go to Fav</button></NavLink> : <button onClick={()=> addToFav(book.id)}>Add to Fav</button>
+                            }
+                        </p>
                         </li>)
                 }
             </ul>
         </div>
     )
 }
-
-// id: 6,
-//                 title: 'Pride and Prejudice',
-//                 author: 'Jane Austen',
-//                 publisher: 'Penguin Classics',
-//                 year: 1813,
-//                 image:
-//                   'https://m.media-amazon.com/images/I/71Q1tPupKjL.jpg',
-//                 price: 6.99,
-//                 read: true,

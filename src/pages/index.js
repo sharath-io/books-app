@@ -1,5 +1,5 @@
 import {Home} from './home';
-import { Favorites } from './favorites';
+import { Favorites } from './favourites';
 import {Read} from './read';
 import {Profile} from './profile';
 

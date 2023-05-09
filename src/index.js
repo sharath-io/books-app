@@ -3,15 +3,18 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import { BookContext,BookProvider } from './contexts/bookContext';
+import { FavoritesProvider, FavoritesContext } from './contexts/favoritesContext';
 
 
-export {BookContext};
+export {BookContext, FavoritesContext};
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Router>
       <BookProvider>
-      <App />
+        <FavoritesProvider>
+        <App />
+        </FavoritesProvider>
       </BookProvider>
     </Router>
   </React.StrictMode>
