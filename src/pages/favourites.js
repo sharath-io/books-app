@@ -5,7 +5,7 @@ export function Favorites(){
     const {favorites,removeFromFav} = useContext(FavoritesContext)
     return (
         <div>
-            <h1>favorites</h1>
+            <h1>Favorites</h1>
             <ul className="book-list" style={{listStyleType: 'none'}}>
                 {
                     favorites.map(({id,image,title,author}) =><li key={id} className="book-card">
